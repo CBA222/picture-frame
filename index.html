@@ -1,29 +1,16 @@
 l<script>
-    window.pAsyncInit = function() {
-        PDK.init({
-            appId: "<4897498254320609884>", // Change this
-            cookie: true
-        });
-    };
-
-    (function(d, s, id){
-        var js, pjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "//assets.pinterest.com/sdk/sdk.js";
-        pjs.parentNode.insertBefore(js, pjs);
-    }(document, 'script', 'pinterest-jssdk'));
+    <script src="https://assets.pinterest.com/sdk/sdk.js">
     
     function dead() {
         return null;
     }
     function login2(){
         document.getElementById("demo").innerHTML = "Success"
-        PDK.login(read_public, callback)
+        PDK.login(read_public, dead())
     }
 </script>
 
-<h1> Digital Picture Frame Test</h1>
+<h1> Digital Picture Frame</h1>
 <h2> By Richard Li and Brian Lin </h2>
 <p id="demo">Waiting</p>
 
