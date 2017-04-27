@@ -13,13 +13,19 @@
         js.src = "//assets.pinterest.com/sdk/sdk.js";
         pjs.parentNode.insertBefore(js, pjs);
     }(document, 'script', 'pinterest-jssdk'));
+    
+    function dead() {
+    return null;
+}
 </script>
+
+
 
 <h1> Digital Picture Frame </h1>
 <h2> By Richard Li and Brian Lin </h2>
 
 <button type="button"
-onclick="PDK.login(read_public)">
+        onclick="<script>PDK.login(read_public, dead())</script>">
 Login</button>
 
 
