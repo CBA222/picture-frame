@@ -1,2 +1,19 @@
+<script>
+    window.pAsyncInit = function() {
+        PDK.init({
+            appId: "<your app-id>", // Change this
+            cookie: true
+        });
+    };
+
+    (function(d, s, id){
+        var js, pjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//assets.pinterest.com/sdk/sdk.js";
+        pjs.parentNode.insertBefore(js, pjs);
+    }(document, 'script', 'pinterest-jssdk'));
+</script>
+
 <h1> Digital Picture Frame </h1>
 <h2> By Richard Li and Brian Lin </h2>
