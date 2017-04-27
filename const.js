@@ -20,7 +20,7 @@ module.exports = {
 
     IG_COOKIE: 'ig_token',
 
-    PIN_APP: '4791914336287198612',
+    PIN_APP: '4897498254320609884',
 
     PIN_FIELDS: 'id,name,image[small]',
 
