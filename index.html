@@ -1,4 +1,4 @@
-<script>
+l<script>
     window.pAsyncInit = function() {
         PDK.init({
             appId: "<4897498254320609884>", // Change this
@@ -15,16 +15,19 @@
     }(document, 'script', 'pinterest-jssdk'));
     
     function dead() {
-    return null;
-}
+        return null;
+    }
+    function login2(){
+        document.getElementById("demo").innerHTML = "Success"
+        PDK.login(read_public, dead())
+    }
 </script>
 
-<h1> Digital Picture Frame Test</h1>
+<h1> Digital Picture Frame</h1>
 <h2> By Richard Li and Brian Lin </h2>
+<p id="demo">Waiting</p>
 
-<button type="button"
-        onclick="<script>PDK.login(read_public, dead())</script>">
-Login</button>
+<button type="button" onclick="login2()">Login</button>
 
 
 <form action="/action_page.php">
