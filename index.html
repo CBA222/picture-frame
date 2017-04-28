@@ -1,14 +1,20 @@
-<script src="https://assets.pinterest.com/sdk/sdk.js">
-    
+<script src="https://assets.pinterest.com/sdk/sdk.js"></script>
+<script>
+	var SCOPE = read_public;
+	var PIN_ID = 4897498254320609884;
+	
+	PDK.init({ appId: PIN_ID, cookie: true });
+	
     function dead() {
         return null;
     }
     function login2(){
         document.getElementById("message").innerHTML = "Success";
-        PDK.login(read_public, dead())
+        PDK.login({ scope : SCOPE});
 }
+</script>
 
-<h1> Digital Picture Frame</h1>
+<h1> Digital Picture Frame Test</h1>
 <h2> By Richard Li and Brian Lin </h2>
 <p id="message">Waiting</p>
 
@@ -24,6 +30,3 @@
   <br><br>
   <input type="submit" value="Submit">
 </form> 
-
-</script>
-
