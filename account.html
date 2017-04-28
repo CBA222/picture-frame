@@ -1,18 +1,36 @@
 <html>
-<head><title>Account</title> </head>
+<head>
+	<title>Account</title>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+</head>
 <body>
 
 <script>
 	var url = "";
 	url = window.location.search.substr(1);
 	var code = "";
-	code = url.substring(url.indexOf("=")+1,url.length);
+	access_code = url.substring(url.indexOf("=")+1,url.length);
 </script>
 	<h1>TEST1</h1>
 	
 <p id = "c"></p>
 
-<script>document.getElementById("c").innerHTML = code;</script>
+<script>document.getElementById("c").innerHTML = access_code;</script>
+	
+<script>
+$(document).ready(function(){
+	$.post("https://api.pinterest.com/v1/oauth/token",
+        {
+          grant_type: authorization_code,
+          client_id: "Duckburg",
+	  client_secret: ,
+	  code: parseInt('access_code')
+        },
+        function(data,status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+});
+</script>
 
 </body>
 </html>
