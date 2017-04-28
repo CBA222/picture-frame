@@ -6,13 +6,13 @@
 	var url = "";
 	url = window.location.search.substr(1);
 	var code = "";
-	code = substring(url.indexOf("=")+1,url.length);
+	code = slice(url.indexOf("=")+1,url.length);
 </script>
-	<h1></h1>
+	<h1>TEST1</h1>
 	
 <p id = "c"></p>
 
-<script>document.getElementById("c").innerHTML = url;</script>
+<script>document.getElementById("c").innerHTML = code;</script>
 
 </body>
 </html>
