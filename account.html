@@ -11,7 +11,7 @@
 	var code = "";
 	access_code = url.substring(url.indexOf("=")+1,url.length);
 </script>
-	<h1>TEST1</h1>
+	<h1>TEST2</h1>
 	
 <p id = "c"></p>
 
@@ -25,9 +25,12 @@
 	  client_secret: "c03225553a91a415cbedc47c532deb946cf3486525de5d5c67b92a70f7acc410",
 	  code: access_code
         },
-        function(data,status){
-            alert("Data: " + data + "\nStatus: " + status);
-        });
+	function process(data) {
+    		if(data.status == "success")
+        	$('#target').html(data.text);   // assuming data is a html string
+    	else 
+        	alert("Error");
+	});
 </script>
 
 </body>
