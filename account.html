@@ -10,7 +10,7 @@
 	url = window.location.search.substr(1);
 	var code = "";
 	access_code = url.substring(url.indexOf("=")+1,url.length);
-	var access_token;
+	var accessToken;
 </script>
 	<h1>TEST2</h1>
 	
@@ -29,10 +29,10 @@
 	  code: access_code
         },
 	function process(data, status) {
-    		access_token = data;
+    		accessToken = data;
 	});
 	
-	$.get("https://api.pinterest.com/v1/me", function(data, status){
+	$.get("https://api.pinterest.com/v1/me/pins?access_token=accessToken", function(data, status){
 		for (x in data) {
     		document.getElementById("demo").innerHTML += x + "<br>";
 		}
