@@ -29,13 +29,15 @@
 	  code: access_code
         },
 	function process(data, status) {
-		for (x in data) {
-    			document.getElementById("demo").innerHTML += x + "<br>";
-		}
     		access_token = data;
 	});
 	
 	$.get("https://api.pinterest.com/v1/me", function(data, status){
+		for (x in myObj) {
+    		document.getElementById("demo").innerHTML += x + "<br>";
+		}
+	});
+}
 				
 </script>
 	
