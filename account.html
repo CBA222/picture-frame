@@ -10,10 +10,13 @@
 	url = window.location.search.substr(1);
 	var code = "";
 	access_code = url.substring(url.indexOf("=")+1,url.length);
+	var access_token;
 </script>
-	<h1>TEST2</h1>
+	<h1>TEST1</h1>
 	
 <p id = "c"></p>
+
+<p id="demo"></p>
 
 <script>document.getElementById("c").innerHTML = access_code;</script>
 	
@@ -25,13 +28,17 @@
 	  client_secret: "c03225553a91a415cbedc47c532deb946cf3486525de5d5c67b92a70f7acc410",
 	  code: access_code
         },
-	function process(data) {
-    		if(data.status == "success")
-        	$('#target').html(data.text);   // assuming data is a html string
-    	else 
-        	alert("Error");
+	function process(data, status) {
+		for (x in data) {
+    			document.getElementById("demo").innerHTML += x + "<br>";
+		}
+    		access_token = data;
 	});
+	
+	$.get("https://api.pinterest.com/v1/me", function(data, status){
+				
 </script>
+	
 
 </body>
 </html>
