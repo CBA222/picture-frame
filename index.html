@@ -1,7 +1,7 @@
 <html>
 <head><Title>Digital Picture Frame</Title></head>
 <body>
-//<script src="https://assets.pinterest.com/sdk/sdk.js"></script>
+<script src="https://assets.pinterest.com/sdk/sdk.js"></script>
 <script>
 	var SCOPE = read_public;
 	var PIN_ID = 4897498254320609884;
@@ -19,10 +19,16 @@
 
 <h1> Digital Picture Frame Test</h1>
 <h2> By Richard Li and Brian Lin </h2>
-<p id="message">Waiting</p>
-<p>Click below to authenticate account</p>
+<p id="message">Welcome, 	</p>
+<p>Click below to authenticate your pinterest account</p>
 
-<a href="https://api.pinterest.com/oauth/?client_id=4897498254320609884&response_type=code&scope=read_public&redirect_uri=https://cba222.github.io/picture-frame/" target="_blank">Login</a>
+<script type="text/javascript">
+function newPopup(url) {
+	popupWindow = window.open(
+		url,'popUpWindow','height=300,width=400,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+}
+</script>
+<p><a href="JavaScript:newPopup('https://api.pinterest.com/oauth/?client_id=4897498254320609884&response_type=code&scope=read_public&redirect_uri=https://cba222.github.io/picture-frame/');">Login</a></p>
 
 
 </body>
