@@ -8,37 +8,43 @@
 <script>
 	var url = "";
 	url = window.location.search.substr(1);
-	var code = "";
 	var access_token = url.substring(url.indexOf("=")+1,url.length);
-</script>
-	<h1>TEST30</h1>
 	
-	<p>Access Token</p>
-	<p id = "c"></p>
+	function getData(obj, property){
+        	var temp = JSON.stringify(obj);
+            	temp = temp.substring(temp.indexOf(property)+property.length+3,temp.length);
+            	temp = temp.substring(0,temp.indexOf('"'));
+		return temp;
+        }
+	
+	//USER variables
+	var url;
+	var name;
+	var firstName;
+	var lastName;
+	var id;
+</script>
+	<h1>TEST37</h1>
+	
+	<p>Access Token:</p>
+	<p id = "profile"></p>
 	<p id = "d">data</p>
 
 <script>document.getElementById("c").innerHTML = access_token;</script>
 	
 <script>
 	$.get("https://api.pinterest.com/v1/me/?access_token="+access_token, function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
+            	url = getData(data, "url");
+		firstName = getData(data, "first_name");
+		lastName = getData(data, "last_name");
+		id = getData(data, "id");
+		name = firstName + " " + lastName;
+		document.getElementbyId("profile").innerHTML = "Name: "+name+"<br>URL: "+url+"<br>ID: "+id;
         });
-	
+	/*
 	$.get("https://api.pinterest.com/v1/me/pins?access_token="+access_token, function(data, status){
 		var myJSON = JSON.stringify(data);
 		//document.getElementById("d").innerHTML = myJSON;
-	});			
-
-	/*
-	$.post("https://api.pinterest.com/v1/oauth/token",
-        {
-          grant_type: "authorization_code",
-          client_id: "4897498254320609884",
-	  client_secret: "c03225553a91a415cbedc47c532deb946cf3486525de5d5c67b92a70f7acc410",
-	  code: access_code
-        },
-	function process(data, status) {
-		alert("Data: " + data + "\nStatus: " + status);
 	});
 	*/
 </script>
