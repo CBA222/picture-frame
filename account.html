@@ -11,7 +11,7 @@
 	var code = "";
 	var access_token = url.substring(url.indexOf("=")+1,url.length);
 </script>
-	<h1>TEST33</h1>
+	<h1>TEST37</h1>
 	
 	<p>Access Token</p>
 	<p id = "c"></p>
@@ -20,7 +20,7 @@
 <script>document.getElementById("c").innerHTML = access_token;</script>
 	
 <script>
-	$.get("https://api.pinterest.com/v1/me",
+	$.get("https://api.pinterest.com/v1/me?access_token="+access_token,
 	      function process(data){
 		alert("Data: " + data);
 		document.getElementById("d").innerHTML = data.url;
