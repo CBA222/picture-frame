@@ -5,10 +5,20 @@
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
+	<h2>Profile test</h2>
+	<p id = "profile"></p>
+	<p id = "feed">Your feed</p>	
 <script>
 	var url = "";
 	url = window.location.search.substr(1);
 	var access_token = url.substring(url.indexOf("=")+1,url.length);
+	
+	//USER variables
+	var url;
+	var name;
+	var firstName;
+	var lastName;
+	var id;
 	
 	function getData(obj, property){
         	var temp = JSON.stringify(obj);
@@ -17,23 +27,6 @@
 		return temp;
         }
 	
-	function fetchBoards(b){
-            b = b.substring(1,b.indexOf(",")-2);
-            return b;
-        }
-	//USER variables
-	var url;
-	var name;
-	var firstName;
-	var lastName;
-	var id;
-	
-	var boards[];
-</script>
-	<h2>Profile test</h2>
-	<p id = "profile"></p>
-	<p id = "feed">Your feed</p>	
-<script>
 	$.get("https://api.pinterest.com/v1/me/?access_token="+access_token, function(data, status){
             	url = getData(data, "url");
 		firstName = getData(data, "first_name");
@@ -42,17 +35,6 @@
 		name = firstName + " " + lastName;
 		document.getElementById("profile").innerHTML = "Name: "+name+"<br>URL: "+url+"<br>ID: "+id;
         });
-	/*
-	$.get("https://api.pinterest.com/v1/me/following/boards/?access_token=" + access_token, function(data, status){
-        	var temp = JSON.stringify(data);
-            	boards = temp.split('https://www.pinterest.com');
-            	boards.shift();
-            var i;
-            for(i=0;i<boards.length;i++){
-            	boards[i] = fetchBoards(boards[i]);
-            }
-            document.getElementById("feed").innerHTML = boards[0]+"<br>"+boards[1]+"<br>"+boards[2];
-        });*/
 </script>
 </body>
 </html>
