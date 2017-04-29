@@ -24,7 +24,7 @@
 	var lastName;
 	var id;
 </script>
-	<h1>TEST37</h1>
+	<h1>TEST39</h1>
 	
 	<p>Access Token:</p>
 	<p id = "profile"></p>
@@ -34,6 +34,7 @@
 	
 <script>
 	$.get("https://api.pinterest.com/v1/me/?access_token="+access_token, function(data, status){
+		document.getElementById("d").innerHTML = JSON.stringify(data);
             	url = getData(data, "url");
 		firstName = getData(data, "first_name");
 		lastName = getData(data, "last_name");
