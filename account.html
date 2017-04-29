@@ -12,7 +12,7 @@
 	access_code = url.substring(url.indexOf("=")+1,url.length);
 	var accessToken;
 </script>
-	<h1>TEST11</h1>
+	<h1>TEST13</h1>
 	
 <p id = "c"></p>
 <p id = "d">data</p>
@@ -20,6 +20,9 @@
 <script>document.getElementById("c").innerHTML = access_code;</script>
 	
 <script>
+	$(document).ajaxError(function(){
+    		alert("An error occurred!");
+	}); 
 	$.post("https://api.pinterest.com/v1/oauth/token",
         {
           grant_type: "authorization_code",
