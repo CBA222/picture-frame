@@ -11,7 +11,7 @@
 	var code = "";
 	var access_token = url.substring(url.indexOf("=")+1,url.length);
 </script>
-	<h1>TEST37</h1>
+	<h1>TEST38</h1>
 	
 	<p>Access Token</p>
 	<p id = "c"></p>
@@ -23,7 +23,7 @@
 	$.get("https://api.pinterest.com/v1/me?access_token="+access_token,
 	      function process(data){
 		alert("Data: " + data);
-		document.getElementById("d").innerHTML = data.url;
+		document.getElementById("d").innerHTML = "random";
 	});
 	
 	$.get("https://api.pinterest.com/v1/me/pins?access_token="+access_token, function(data, status){
