@@ -12,11 +12,10 @@
 	access_code = url.substring(url.indexOf("=")+1,url.length);
 	var accessToken;
 </script>
-	<h1>TEST1</h1>
+	<h1>TEST2</h1>
 	
 <p id = "c"></p>
-<p id = "token">token</p>
-<p id="demo"></p>
+<p id = "d">data</p>
 
 <script>document.getElementById("c").innerHTML = access_code;</script>
 	
@@ -29,15 +28,12 @@
 	  code: access_code
         },
 	function process(data, status) {
-		var myJSON = JSON.stringify(data);
-		document.getElementById("token").innerHTML = myJSON;
     		accessToken = data;
 	});
 	
 	$.get("https://api.pinterest.com/v1/me/pins?access_token=accessToken", function(data, status){
-		for (x in data) {
-    		document.getElementById("demo").innerHTML += x + "<br>";
-		}
+		var myJSON = JSON.stringify(data);
+		document.getElementById("d").innerHTML = myJSON;
 	});
 }
 				
