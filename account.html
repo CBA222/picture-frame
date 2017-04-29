@@ -1,4 +1,4 @@
-//<html>
+<html>
 <head>
 	<title>Account</title>
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
@@ -24,17 +24,11 @@
 	var lastName;
 	var id;
 </script>
-	<h1>WELCOME 5</h1>
-	
-	<p>Access Token:</p>
+	<h2>Profile</h2>
 	<p id = "profile"></p>
-	<p id = "d">data</p>
-
-<script>document.getElementById("c").innerHTML = access_token;</script>
-	
+	<p id = "feed">Your feed</p>	
 <script>
 	$.get("https://api.pinterest.com/v1/me/?access_token="+access_token, function(data, status){
-		document.getElementById("d").innerHTML = JSON.stringify(data);
             	url = getData(data, "url");
 		firstName = getData(data, "first_name");
 		lastName = getData(data, "last_name");
