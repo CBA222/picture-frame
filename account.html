@@ -9,17 +9,18 @@
 	var url = "";
 	url = window.location.search.substr(1);
 	var code = "";
-	access_code = url.substring(url.indexOf("=")+1,url.length);
-	var accessToken;
+	var access_token = url.substring(url.indexOf("=")+1,url.length);
 </script>
-	<h1>TEST33</h1>
+	<h1>TEST34</h1>
 	
-<p id = "c"></p>
-<p id = "d">data</p>
+	<p>Access Token</p>
+	<p id = "c"></p>
+	<p id = "d">data</p>
 
-<script>document.getElementById("c").innerHTML = access_code;</script>
+<script>document.getElementById("c").innerHTML = access_token;</script>
 	
 <script>
+	/*
 	$.post("https://api.pinterest.com/v1/oauth/token",
         {
           grant_type: "authorization_code",
@@ -30,12 +31,11 @@
 	function process(data, status) {
 		alert("Data: " + data + "\nStatus: " + status);
 	});
-	
+	*/
 	$.get("https://api.pinterest.com/v1/me/pins?access_token=accessToken", function(data, status){
 		//var myJSON = JSON.stringify(data);
 		//document.getElementById("d").innerHTML = myJSON;
-	});
-	<p>accessToken</p>			
+	});			
 </script>
 	
 
