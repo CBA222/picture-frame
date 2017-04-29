@@ -4,7 +4,6 @@
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-
 <script>
 	var url = "";
 	url = window.location.search.substr(1);
@@ -16,13 +15,18 @@
             	temp = temp.substring(0,temp.indexOf('"'));
 		return temp;
         }
-	
+	function fetchBoards(b){
+            b = b.substring(1,b.indexOf(",")-2);
+            return b;
+        }
 	//USER variables
 	var url;
 	var name;
 	var firstName;
 	var lastName;
 	var id;
+	
+	var boards[];
 </script>
 	<h2>Profile</h2>
 	<p id = "profile"></p>
@@ -37,12 +41,16 @@
 		document.getElementById("profile").innerHTML = "Name: "+name+"<br>URL: "+url+"<br>ID: "+id;
 		//document.getElementbyId("profile").innerHTML = "Name: "+name+"<br>URL: "+url+"<br>ID: "+id;
         });
-	/*
-	$.get("https://api.pinterest.com/v1/me/pins?access_token="+access_token, function(data, status){
-		var myJSON = JSON.stringify(data);
-		//document.getElementById("d").innerHTML = myJSON;
-	});
-	*/
+	$.get("https://api.pinterest.com/v1/me/following/boards/?access_token=" + access_token, function(data, status){
+        	var temp = JSON.stringify(data);
+            	boards = temp.split('https://www.pinterest.com');
+            	boards.shift();
+            var i;
+            for(i=0;i<boards.length;i++){
+            	boards[i] = fetchBoards(boards[i]);
+            }
+            document.getElementById("feed").innerHTML = boards[0]+"<br>"+boards[1]+"<br>"+boards[2];
+        });
 </script>
 </body>
 </html>
