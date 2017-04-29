@@ -1,3 +1,4 @@
+
 <html>
 <head>
 	<title>Account</title>
@@ -28,7 +29,7 @@
 	
 	var boards[];
 </script>
-	<h2>Profile</h2>
+	<h2>Profile test</h2>
 	<p id = "profile"></p>
 	<p id = "feed">Your feed</p>	
 <script>
@@ -39,8 +40,8 @@
 		id = getData(data, "id");
 		name = firstName + " " + lastName;
 		document.getElementById("profile").innerHTML = "Name: "+name+"<br>URL: "+url+"<br>ID: "+id;
-		//document.getElementbyId("profile").innerHTML = "Name: "+name+"<br>URL: "+url+"<br>ID: "+id;
         });
+	/*
 	$.get("https://api.pinterest.com/v1/me/following/boards/?access_token=" + access_token, function(data, status){
         	var temp = JSON.stringify(data);
             	boards = temp.split('https://www.pinterest.com');
@@ -50,7 +51,7 @@
             	boards[i] = fetchBoards(boards[i]);
             }
             document.getElementById("feed").innerHTML = boards[0]+"<br>"+boards[1]+"<br>"+boards[2];
-        });
+        });*/
 </script>
 </body>
 </html>
