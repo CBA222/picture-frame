@@ -20,11 +20,17 @@
 	var lastName;
 	var id;
 	
+	var boards = [];
+	
 	function getData(obj, property){
         	var temp = JSON.stringify(obj);
             	temp = temp.substring(temp.indexOf(property)+property.length+3,temp.length);
             	temp = temp.substring(0,temp.indexOf('"'));
 		return temp;
+        }
+	function fetchBoards(b){
+            b = b.substring(1,b.indexOf(",")-2);
+            return b;
         }
 	
 	$.get("https://api.pinterest.com/v1/me/?access_token="+access_token, function(data, status){
@@ -34,6 +40,16 @@
 		id = getData(data, "id");
 		name = firstName + " " + lastName;
 		document.getElementById("profile").innerHTML = "Name: "+name+"<br>URL: "+url+"<br>ID: "+id;
+        });
+	$.get("https://api.pinterest.com/v1/me/following/boards/?access_token=" + access_token, function(data, status){
+        	var temp = JSON.stringify(data);
+            	boards = temp.split('https://www.pinterest.com');
+            	boards.shift();
+            	var i;
+            	for(i=0;i<boards.length;i++){
+            		boards[i] = fetchBoards(boards[i]);
+            	}
+            	document.getElementById("feed").innerHTML = boards[0]+"<br>"+boards[1]+"<br>"+boards[2];
         });
 </script>
 </body>
