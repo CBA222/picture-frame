@@ -1,11 +1,10 @@
-
 <html>
 <head>
 	<title>Account</title>
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-	<h2>Profile test</h2>
+	<h2>Profile</h2>
 	<p id = "profile"></p>
 	<p id = "feed">Your feed</p>	
 	<p id="feed2">This may take some time...</p>
@@ -76,7 +75,7 @@
 	}
 
 	getBoards(function(bd) {
-	  document.getElementById("feed").innerHTML = bd[0] + "<br>" + bd[1] + "<br>" + bd[2];
+	  //document.getElementById("feed").innerHTML = bd[0] + "<br>" + bd[1] + "<br>" + bd[2];
 	  var h, j, k;
 	  for (h = 0; h < bd.length; h++) {
 	    pins(bd, h, function(tb) {
