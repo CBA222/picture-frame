@@ -8,6 +8,10 @@
 	<h2>Profile test</h2>
 	<p id = "profile"></p>
 	<p id = "feed">Your feed</p>	
+	<p id="feed2">This may take some time...</p>
+	<ul>
+  		<li>Head</li>
+	</ul>
 <script>
 	var url = "";
 	url = window.location.search.substr(1);
@@ -28,10 +32,6 @@
             	temp = temp.substring(0,temp.indexOf('"'));
 		return temp;
         }
-	function fetchBoards(b){
-            b = b.substring(1,b.indexOf(",")-2);
-            return b;
-        }
 	
 	$.get("https://api.pinterest.com/v1/me/?access_token="+access_token, function(data, status){
             	url = getData(data, "url");
@@ -41,16 +41,51 @@
 		name = firstName + " " + lastName;
 		document.getElementById("profile").innerHTML = "Name: "+name+"<br>URL: "+url+"<br>ID: "+id;
         });
-	$.get("https://api.pinterest.com/v1/me/following/boards/?access_token=" + access_token, function(data, status){
-        	var temp = JSON.stringify(data);
-            	boards = temp.split('https://www.pinterest.com');
-            	boards.shift();
-            	var i;
-            	for(i=0;i<boards.length;i++){
-            		boards[i] = fetchBoards(boards[i]);
-            	}
-            	document.getElementById("feed").innerHTML = boards[0]+"<br>"+boards[1]+"<br>"+boards[2];
-        });
+	function getBoards(callback) {
+	  $.get("https://api.pinterest.com/v1/me/following/boards/?access_token=" + access_token, function(data, status) {
+	    var temp = JSON.stringify(data);
+	    boards = temp.split('https://www.pinterest.com');
+	    boards.shift();
+	    var i;
+	    for (i = 0; i < boards.length; i++) {
+	      boards[i] = boards[i].substring(1, boards[i].indexOf(",") - 2)
+	    }
+	    callback(boards);
+	  });
+	}
+
+	function pins(bb, h, callback) {
+	  $.get("https://api.pinterest.com/v1/boards/" + bb[h] + "/pins/?access_token=" + access_token + "&fields=image", function(data, status) {
+	    var temp2 = JSON.stringify(data);
+	    var tempBoard = [];
+	    tempBoard = temp2.split('"image":{"original":{"url":"');
+	    tempBoard.shift();
+	    var k;
+	    for (k = 0; k < tempBoard.length; k++) {
+	      tempBoard[k] = tempBoard[k].substring(0, tempBoard[k].indexOf(",") - 1);
+	    }
+	    for (k = 0; k < tempBoard.length; k++) {
+		if($("il").length<10){
+		$("ul").append("<li><img src = " + tempBoard[k] + "></li>");
+	      }else{
+		document.getElementById("feed2").innerHTML = "ping";
+	      }
+	    }
+	    callback(tempboard);
+	  });
+	}
+
+	getBoards(function(bd) {
+	  document.getElementById("feed").innerHTML = bd[0] + "<br>" + bd[1] + "<br>" + bd[2];
+	  var h, j, k;
+	  for (h = 0; h < bd.length; h++) {
+	    pins(bd, h, function(tb) {
+	      for (j = 0; j < 4; j++) {
+		document.getElementById(j).innerHTML = tb[j];
+	      }
+	    });
+	  }
+	});
 </script>
 </body>
 </html>
