@@ -1,15 +1,17 @@
 <html>
 <head>
 	<title>Account</title>
+	<link  href="main.css" rel="stylesheet" type="text/css"/>
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-	<h2>Profile</h2>
-	<p id = "profile"></p>
-	<p id = "feed">Your feed</p>	
-	<p id="feed2">This may take some time...</p>
-	<ul>
-  		<li>Head</li>
+	<div id="top">
+  		<h3 id = "p">Welcome</h3>
+	</div>
+	<ul id="bar">
+  		<li><a class="active" href="#feed">feed</a></li>
+  		<li><a href="#boards">boards</a></li>
+  		<li><a href="#pins">pins</a></li>
 	</ul>
 <script>
 	var url = "";
@@ -60,12 +62,20 @@
 	    tempBoard = temp2.split('"image":{"original":{"url":"');
 	    tempBoard.shift();
 	    var k;
+    		for(k=0;k<tempBoard.length;k++){
+    			width[k] = Number(tempBoard[k].substring(tempBoard[k].indexOf("width")+7,tempBoard[k].indexOf("height")	-2));
+      			height[k] = Number(tempBoard[k].substring(tempBoard[k].indexOf("height")+8,tempBoard[k].indexOf("}")));
+    		}		  
 	    for (k = 0; k < tempBoard.length; k++) {
 	      tempBoard[k] = tempBoard[k].substring(0, tempBoard[k].indexOf(",") - 1);
 	    }
 	    for (k = 0; k < tempBoard.length; k++) {
 		if($("il").length<10){
-		$("ul").append("<li><img src = " + tempBoard[k] + "></li>");
+			if(width[k]>height[k]){
+        			$("#bar").after('<div class="gallery"><img src="'+tempBoard[k]+'" class = "image"></div>');
+        		}else{
+        			$("#bar").after('<div class="gallery"><img src="'+tempBoard[k]+'" class = "image portrait"></div>');
+        		}
 	      }else{
 		document.getElementById("feed2").innerHTML = "ping";
 	      }
