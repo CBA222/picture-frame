@@ -35,12 +35,12 @@
         }
 	
 	$.get("https://api.pinterest.com/v1/me/?access_token="+access_token, function(data, status){
-            	url = getData(data, "url");
+        url = getData(data, "url");
 		firstName = getData(data, "first_name");
 		lastName = getData(data, "last_name");
 		id = getData(data, "id");
 		name = firstName + " " + lastName;
-		document.getElementById("profile").innerHTML = "Name: "+name+"<br>URL: "+url+"<br>ID: "+id;
+		document.getElementById("p").innerHTML = "Welcome, " + name;
         });
 	function getBoards(callback) {
 	  $.get("https://api.pinterest.com/v1/me/following/boards/?access_token=" + access_token, function(data, status) {
@@ -59,6 +59,8 @@
 	  $.get("https://api.pinterest.com/v1/boards/" + bb[h] + "/pins/?access_token=" + access_token + "&fields=image", function(data, status) {
 	    var temp2 = JSON.stringify(data);
 	    var tempBoard = [];
+		  var width = [];
+		  var height = [];
 	    tempBoard = temp2.split('"image":{"original":{"url":"');
 	    tempBoard.shift();
 	    var k;
